@@ -1,1 +1,9 @@
-pull_request_rules: []
+pull_request_rules:
+  - name: VM2 deselect in-flight merge revocation
+    conditions:
+      - base = vm2-deselect-base
+      - title = VM2_DESELECT_INFLIGHT_MERGE
+    actions:
+      merge:
+        method: merge
+        merge_bot_account: livastic-vm2-primary-20260911
