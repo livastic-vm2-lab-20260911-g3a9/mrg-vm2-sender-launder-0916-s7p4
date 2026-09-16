@@ -1,10 +1,10 @@
-name: VM2 base rename hold
+name: VM2 protected base rename hold
 
 on:
   pull_request:
     branches:
-      - release-old
-      - release-new
+      - protected-old
+      - protected-new
 
 permissions:
   contents: read
@@ -21,7 +21,7 @@ jobs:
           set -euo pipefail
           echo "head_ref=${{ github.head_ref }}"
           if [[ "${{ github.head_ref }}" == mergify/merge-queue/* ]]; then
-            echo VM2_BASE_RENAME_SYNTHETIC_HOLD_START
+            echo VM2_PROTECTED_BASE_RENAME_HOLD_START
             sleep 75
-            echo VM2_BASE_RENAME_SYNTHETIC_HOLD_END
+            echo VM2_PROTECTED_BASE_RENAME_HOLD_END
           fi
