@@ -1,0 +1,7 @@
+scopes:
+  critical:
+    files:
+      critical:
+        include:
+          - "critical/**"
+pull_request_rules: []
