@@ -1,17 +1,1 @@
-pull_request_rules:
-  - name: VM2 low-priv sender marker generator
-    conditions:
-      - sender = livastic-vm2-secondary-20260911
-      - -label = vm2-sender-launder-marker
-    actions:
-      label:
-        add:
-          - vm2-sender-launder-marker
-
-  - name: VM2 privileged sender-permission sentinel
-    conditions:
-      - label = vm2-sender-launder-marker
-      - sender-permission >= write
-    actions:
-      comment:
-        message: VM2_SENDER_PERMISSION_WRITE_SENTINEL
+pull_request_rules: []
