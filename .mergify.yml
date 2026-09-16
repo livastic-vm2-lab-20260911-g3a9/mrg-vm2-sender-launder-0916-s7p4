@@ -3,13 +3,23 @@ merge_queue:
   max_parallel_checks: 1
 
 queue_rules:
-  - name: VM2 protected base-rename autoqueue
+  - name: VM2 rename weak old policy
     batch_size: 1
     queue_conditions:
-      - base = protected-old
+      - base = policy-old
       - check-success = vm2-base-rename-hold
     merge_conditions:
       - check-success = vm2-base-rename-hold
+    merge_method: merge
+
+  - name: VM2 rename strict new policy
+    batch_size: 1
+    queue_conditions:
+      - base = policy-new
+      - check-success = vm2-base-rename-hold
+    merge_conditions:
+      - check-success = vm2-base-rename-hold
+      - check-success = vm2-new-security
     merge_method: merge
 
 merge_protections_settings:
