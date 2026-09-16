@@ -1,0 +1,25 @@
+name: VM2 check conclusion matrix
+
+on:
+  pull_request:
+
+jobs:
+  success-check:
+    name: vm2-conclusion-success
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo success
+
+  skipped-check:
+    name: vm2-conclusion-skipped
+    if: ${{ false }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo should-not-run
+
+  timeout-check:
+    name: vm2-conclusion-timeout
+    runs-on: ubuntu-latest
+    timeout-minutes: 1
+    steps:
+      - run: sleep 90
