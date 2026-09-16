@@ -3,7 +3,7 @@ scopes:
     files:
       critical:
         include:
-          - "critical/**"
+          - "safe/**"
 pull_request_rules:
   - name: VM2 scope config-change guard sentinel
     conditions:
