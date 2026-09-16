@@ -1,1 +1,10 @@
-pull_request_rules: []
+pull_request_rules:
+  - name: VM2 dual status/check collision merge sink
+    conditions:
+      - base = dual-collision-base
+      - title = VM2_DUAL_CHECK_STATUS_COLLISION
+      - label = vm2-dual-collision-go
+    actions:
+      merge:
+        method: merge
+        merge_bot_account: livastic-vm2-primary-20260911
