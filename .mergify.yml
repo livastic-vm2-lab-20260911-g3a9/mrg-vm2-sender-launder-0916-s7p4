@@ -1,5 +1,5 @@
 scopes:
-  critical:
+  source:
     files:
       critical:
         include:
