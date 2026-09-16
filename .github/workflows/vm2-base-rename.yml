@@ -1,0 +1,27 @@
+name: VM2 base rename hold
+
+on:
+  pull_request:
+    branches:
+      - release-old
+      - release-new
+
+permissions:
+  contents: read
+
+jobs:
+  hold:
+    name: vm2-base-rename-hold
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Hold only synthetic queue checks
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "head_ref=${{ github.head_ref }}"
+          if [[ "${{ github.head_ref }}" == mergify/merge-queue/* ]]; then
+            echo VM2_BASE_RENAME_SYNTHETIC_HOLD_START
+            sleep 75
+            echo VM2_BASE_RENAME_SYNTHETIC_HOLD_END
+          fi

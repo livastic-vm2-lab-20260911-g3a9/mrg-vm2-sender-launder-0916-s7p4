@@ -1,1 +1,14 @@
+merge_queue:
+  mode: serial
+  max_parallel_checks: 1
+
+queue_rules:
+  - name: VM2 base-rename freshness
+    batch_size: 1
+    queue_conditions:
+      - base = release-old
+    merge_conditions:
+      - check-success = vm2-base-rename-hold
+    merge_method: merge
+
 pull_request_rules: []
