@@ -1,10 +1,10 @@
-name: VM2 protected base rename hold
+name: VM2 rename policy crossover checks
 
 on:
   pull_request:
     branches:
-      - protected-old
-      - protected-new
+      - policy-old
+      - policy-new
 
 permissions:
   contents: read
@@ -21,7 +21,16 @@ jobs:
           set -euo pipefail
           echo "head_ref=${{ github.head_ref }}"
           if [[ "${{ github.head_ref }}" == mergify/merge-queue/* ]]; then
-            echo VM2_PROTECTED_BASE_RENAME_HOLD_START
+            echo VM2_POLICY_CROSSOVER_HOLD_START
             sleep 75
-            echo VM2_PROTECTED_BASE_RENAME_HOLD_END
+            echo VM2_POLICY_CROSSOVER_HOLD_END
           fi
+
+  new-security:
+    name: vm2-new-security
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deliberate failing policy discriminator
+        run: |
+          echo VM2_POLICY_CROSSOVER_SECURITY_FAILURE
+          exit 1
