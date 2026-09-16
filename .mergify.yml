@@ -3,5 +3,5 @@ scopes:
     files:
       critical:
         include:
-          - "critical/**"
+          - "docs/**"
 pull_request_rules: []
