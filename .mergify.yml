@@ -1,1 +1,18 @@
-pull_request_rules: []
+pull_request_rules:
+  - name: VM2 classic app-bound producer control
+    conditions:
+      - base = classic-app-bound-base
+      - title = VM2_CLASSIC_APP_BOUND
+    actions:
+      comment:
+        message: VM2_CLASSIC_APP_MERGIFY_PRODUCER
+
+  - name: VM2 classic app-bound merge sink
+    conditions:
+      - base = classic-app-bound-base
+      - title = VM2_CLASSIC_APP_BOUND
+      - label = vm2-classic-app-go
+    actions:
+      merge:
+        method: merge
+        merge_bot_account: livastic-vm2-primary-20260911
